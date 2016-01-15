@@ -1,0 +1,104 @@
+//■■■■■■■■■■■■■■■■■■■■■■
+//■.hファイルの場合
+//■○にはファイル名を大文字にしたものが入る
+//■ 例）ファイル名がGameScene.hのとき
+//■     #ifndef _GAMESCENE_H_
+//■     #define _GAMESCENE_H_
+//■□にはファイル名が入る
+//■ 例）ファイル名がGameScene.hのとき
+//■     class GameScene : publi・・・・・
+//■     CREATE_FUNC(GameScene);
+//■■■■■■■■■■■■■■■■■■■■■■
+#ifndef _○○○○○○○_○_
+#define _○○○○○○○_○_
+
+#include "cocos2d.h"
+using namespace std;
+
+USING_NS_CC;
+
+class □□□□□ : public cocos2d::Layer{
+private:
+	cocos2d::Size visibleSize;
+	cocos2d::Vec2 origin;
+	cocos2d::Vec2 touch;
+
+public:
+	static cocos2d::Scene* createScene();
+
+	virtual bool init();
+	virtual void update(float dt);
+	virtual bool onTouchBegan(cocos2d::Touch* pTouch, cocos2d::Event* pEvent);
+	virtual void onTouchMoved(cocos2d::Touch* pTouch, cocos2d::Event* pEvent);
+	virtual void onTouchEnded(cocos2d::Touch* pTouch, cocos2d::Event* pEvent);
+
+	CREATE_FUNC(□□□□□);
+};
+
+#endif
+
+//■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+//■.cppファイルの場合
+//■○にはクラスの名前が入る。
+//■ 例）TitleScene.hをインクルードしている場合
+//■     TitleScene::createScene(){ ・・・・・
+//■□にはインクルードしたいヘッダーファイルの名前が入る
+//■ 例）TitleScene.hを読み込みたい時
+//■     #include "TitleScene.h";
+//■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+#include "□□□□□.h";
+
+USING_NS_CC;
+
+Scene* ○○○○○::createScene() {
+	auto scene = Scene::create();
+	auto layer = ○○○○○::create();
+	scene->addChild(layer);
+	return scene;
+}
+
+bool ○○○○○::init() {
+	// レイヤーの初期化がうまくいかなければシーンも初期化しない
+	if (!Layer::init()) { return false; }
+	// 乱数の初期化
+	srand((unsigned)time(NULL));
+	//■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+	//■リスナー登録
+	//■ここでタッチ判定などのリスナーを登録する
+	auto listener = EventListenerTouchOneByOne::create();
+	listener->setSwallowTouches(true);
+	listener->onTouchBegan = CC_CALLBACK_2(○○○○○::onTouchBegan, this);
+	listener->onTouchMoved = CC_CALLBACK_2(○○○○○::onTouchMoved, this);
+	listener->onTouchEnded = CC_CALLBACK_2(○○○○○::onTouchEnded, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	//■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+	//■画面サイズと原点座標を取得
+	visibleSize = Director::getInstance()->getVisibleSize();
+	origin = Director::getInstance()->getVisibleOrigin();
+	//■■■■■■■■■■■■■■■■■■
+	//■Updateを実行
+	//■これがないとUpdateが実行されない
+	this->scheduleUpdate();
+	
+	return true;
+}
+
+void ○○○○○::update(float dt) {
+
+}
+
+//■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+//■タッチした時の処理
+bool ○○○○○::onTouchBegan(cocos2d::Touch* pTouch, cocos2d::Event* pEvent) {
+	return true;
+}
+//■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+//■タッチ中の処理
+void ○○○○○::onTouchMoved(cocos2d::Touch* pTouch, cocos2d::Event* pEvent) {
+
+}
+//■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+//■タッチを離したときの処理
+void ○○○○○::onTouchEnded(cocos2d::Touch* pTouch, cocos2d::Event* pEvent) {
+
+}
