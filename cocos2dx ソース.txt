@@ -1,0 +1,31 @@
+cocos2dx
+
+画像縮小
+bgSprite->setScale(0.2f, 0.2f);
+
+
+	//--------------------------------------------------------
+	//右ボタン
+	//画面サイズを取得 
+	/*Size ss = Director::getInstance()->getVisibleSize();
+
+	//タップ前のスプライト
+	auto a = Sprite::create("left.png");
+
+	a->setOpacity(100);
+
+	//タップ時のスプライト
+	auto ppSelectedSprite = Sprite::create("right2.png");
+
+
+	//メニューアイテムの作成n
+	auto ppBtnItem = MenuItemSprite::create(a, ppSelectedSprite);
+
+	//メニューの作成　pMenuの中にpBtnItemを入れる
+	auto ppMenu = Menu::create(ppBtnItem, NULL);
+
+	//pMenuを画面中央に配置
+	//pMenu->setPosition(Vec2(240 / 2, 300 / 2));
+	ppMenu->setPosition(Vec2(580 / 2, 300 / 2));
+
+	this->addChild(ppMenu);*/

@@ -1,1 +1,8 @@
 proj.win32/Debug.win32/
+proj.android/
+proj.win10/
+proj.ios.mac/
+proj.android-studio/
+proj.win8.1-universal/
+cocos2d/
+proj.win32/

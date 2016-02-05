@@ -1,7 +1,7 @@
 #include "AppDelegate.h"
 #include "TitleScene.h"
 #include "Powerup.h"
-
+#include "GameScene.h"
 USING_NS_CC;
 
 // c‰æ–Ê‚Í‚±‚Á‚¿
@@ -73,7 +73,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-	auto scene = TitleScene::createScene();
+	//auto scene = TitleScene::createScene();
+	auto scene = GameScene::createScene();
+
 
     // run
     director->runWithScene(scene);
